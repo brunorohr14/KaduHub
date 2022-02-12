@@ -1,0 +1,64 @@
+//Eurakuan
+int red_led = A0;
+int yellow_led = A1;
+int green_led = A2;
+
+//Carrega a biblioteca LiquidCrystal
+#include <LiquidCrystal.h>
+ 
+//Define os pinos que serão utilizados para ligação ao display
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+ 
+void setup()
+{
+  pinMode (red_led, OUTPUT);
+  pinMode (yellow_led, OUTPUT);
+  pinMode (green_led, OUTPUT);
+  //Define o número de colunas e linhas do LCD
+  lcd.begin(16, 2);
+}
+ 
+void loop()
+{//Verde
+  digitalWrite(red_led, LOW);
+  digitalWrite(yellow_led, LOW);
+  digitalWrite(green_led, HIGH);
+  //Limpa a tela
+  lcd.clear();
+  //Posiciona o cursor na coluna 3, linha 0;
+  lcd.setCursor(4, 0);
+  //Envia o texto entre aspas para o LCD
+  lcd.print("Aguarde");
+  lcd.setCursor(2, 1);
+  lcd.print("Farol Verde");
+
+  delay(10000);
+  
+  //Amarelo
+  digitalWrite(red_led, LOW);
+  digitalWrite(yellow_led, HIGH);
+  digitalWrite(green_led, LOW);
+  //Limpa a tela
+  lcd.clear();
+  //Posiciona o cursor na coluna 3, linha 0;
+  lcd.setCursor(4, 0);
+  //Envia o texto entre aspas para o LCD
+  lcd.print("Aguarde");
+  lcd.setCursor(1, 1);
+  lcd.print("Farol Amarelo");
+  delay(2000);
+  
+  //Vermelho
+  digitalWrite(red_led, HIGH);
+  digitalWrite(yellow_led, LOW);
+  digitalWrite(green_led, LOW);
+  //Limpa a tela
+  lcd.clear();
+  //Posiciona o cursor na coluna 3, linha 0;
+  lcd.setCursor(3, 0);
+  //Envia o texto entre aspas para o LCD
+  lcd.print("Travessia");
+  lcd.setCursor(1, 1);
+  lcd.print("Farol Vermelho");
+  delay(10000);
+}
